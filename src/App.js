@@ -21,7 +21,7 @@ function App () {
   };
 }
 
-  return (
+return (
     <div className="App">
       <div className="weather-app">
         <header>
@@ -40,6 +40,7 @@ function App () {
             />
             <button type="submit" value="Search" className="search-button"></button>
           </form>
+          {error && <p>{error}</p>}
         </header>
         <main className="current-weather">
           <div className="blocks">
