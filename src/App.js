@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import "./App.css";
+import "src/App.css";
 
 const API_KEY = 'e2cbf24aafdo2e69311a33etb41012ad'; 
 
