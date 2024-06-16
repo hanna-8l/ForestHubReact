@@ -2,28 +2,25 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import "./App.css";
 
-const App = () => {
-    const [city, setCity] = useState('');
-    const [weather, setWeather] = useState(null);
-    const [error, setError] = useState('');
+const API_KEY = 'e2cbf24aafdo2e69311a33etb41012ad'; 
 
-    const API_KEY = 'e2cbf24aafdo2e69311a33etb41012ad'; // Replace with your OpenWeather API key
+function App () {
+  const [city, setCity] = useState('');
+  const [weather, setWeather] = useState(null);
+  const [error, setError] = useState('');
 
-    const handleSearch = async (e) => {
-        e.preventDefault();
+  const handleSearch = async (e) => {
+      e.preventDefault();
         setError('');
-        try {
-            const response = await axios.get(`https://api.shecodes.io/weather/v1/current?query=${query}&key=${key}`);
-            setWeather(response.data);
-        } catch (err) {
-            setError('City not found. Please try again.');
-        }
-    };
-  }
-// export default function App() {
-//   let weatherData = {
-//     city: "Madrid",
-//   };
+      try {
+          const response = await axios.get(`https://api.shecodes.io/weather/v1/current?query=${query}&key=${key}`);
+          setWeather(response.data);
+      } catch (err) {
+          setError('City not found. Please try again.');
+      }
+  };
+}
+
   return (
     <div className="App">
       <div className="weather-app">
@@ -41,7 +38,7 @@ const App = () => {
               required
               className="search-input"
             />
-            <input type="submit" value="Search" className="search-button" />
+            <button type="submit" value="Search" className="search-button"></button>
           </form>
         </header>
         <main className="current-weather">
