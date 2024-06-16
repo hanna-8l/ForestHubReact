@@ -1,5 +1,25 @@
+import React, { useState } from 'react';
+import axios from 'axios';
 import "./app.css";
 
+const App = () => {
+    const [city, setCity] = useState('');
+    const [weather, setWeather] = useState(null);
+    const [error, setError] = useState('');
+
+    const API_KEY = 'e2cbf24aafdo2e69311a33etb41012ad'; // Replace with your OpenWeather API key
+
+    const handleSearch = async (e) => {
+        e.preventDefault();
+        setError('');
+        try {
+            const response = await axios.get(`https://api.shecodes.io/weather/v1/current?query=${query}&key=${key}`);
+            setWeather(response.data);
+        } catch (err) {
+            setError('City not found. Please try again.');
+        }
+    };
+  }
 export default function App() {
   let weatherData = {
     city: "Madrid",
@@ -12,10 +32,12 @@ export default function App() {
             <p className="forecasthub">ForecastHub</p>
             <p className="weather">Weather</p>
           </div>
-          <form>
+          <form onSubmit={handleSearch}>
             <input
               type="search"
               placeholder="Enter a city.."
+              value={city} 
+              onChange={(e) => setCity(e.target.value)}
               required
               className="search-input"
             />
@@ -28,10 +50,13 @@ export default function App() {
               <div className="current">
                 <div className="current-temperature">
                   <h1 className="current-city">{weatherData.city}</h1>
-                  <span className="current-temperature-value">20</span>
-                  <span className="current-temperature-unit">°C</span>
+                  <span className="current-temperature-value">{weather.weather[0].description}</span>
+                  <span className="current-temperature-unit">{weather.main.temp}°C</span>
                 </div>
-                <div className="current-temperature-icon"></div>
+                <div className="current-temperature-icon"><img 
+                        src={`http://openweathermap.org/img/wn/${weather.weather[0].icon}.png`} 
+                        alt={weather.weather[0].description} 
+                    /></div>
               </div>
               <p className="current-details">
                 <span></span>
