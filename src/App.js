@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import "./app.css";
+import "./App.css";
 
 const App = () => {
     const [city, setCity] = useState('');
@@ -20,10 +20,10 @@ const App = () => {
         }
     };
   }
-export default function App() {
-  let weatherData = {
-    city: "Madrid",
-  };
+// export default function App() {
+//   let weatherData = {
+//     city: "Madrid",
+//   };
   return (
     <div className="App">
       <div className="weather-app">
@@ -92,4 +92,5 @@ export default function App() {
       </div>
     </div>
   );
-}
+
+export default App;
