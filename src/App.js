@@ -58,7 +58,7 @@ function App() {
                       />
                     </div>
                     <p className="current-details">
-                      Humidity: {weather.humidity}%<br />
+                      Humidity: {weather.main.humidity}%<br />
                       Wind: {weather.wind.speed} km/h
                     </p>
                   </>
