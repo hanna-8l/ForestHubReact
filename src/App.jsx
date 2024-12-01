@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './App.css';
+import SearchBar from './SearchBar';
+import WeatherService from './weatherService';
 
 const API_KEY = 'e2cbf24aafdo2e69311a33etb41012ad'; 
 
@@ -16,7 +18,8 @@ function App() {
       const response = await axios.get(`https://api.shecodes.io/weather/v1/current?query=${city}&key=${API_KEY}`);
       setWeather(response.data);
     } catch (err) {
-      setError('City not found. Please try again.');
+      setError('City not found. Please try again.');setWeatherData(null);
+      setWeatherData(null);
     }
   };
 

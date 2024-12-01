@@ -12,3 +12,5 @@ export const getWeatherData = async (cityName) => {
     throw new Error('Failed to fetch weather data');
   }
 };
+
+export default weatherService;
